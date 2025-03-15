@@ -52,7 +52,6 @@ which_key.add({
 -- Keybindings for multicursor
 vim.api.nvim_set_keymap("n", "<C-.n>", "<Plug>(multicursor-next)", {})
 vim.api.nvim_set_keymap("n", "<C-.p>", "<Plug>(multicursor-prev)", {})
-vim.api.nvim_set_keymap("n", "<C-.b>", "<C-V>", { noremap = true })
 
 -- Icon picker
 vim.api.nvim_set_keymap("n", "<leader>pi", "<cmd>IconPickerYank<cr>", { noremap = true, silent = true, desc = "Pick icon and yank" })
