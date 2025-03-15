@@ -46,13 +46,14 @@ local which_key = require("which-key")
 -- Register the group using the new format
 which_key.add({
   { "<leader>p", group = "Plugins" },
+  { "<leader>C", group = "Cody" },
 })
 
- vim.api.nvim_set_keymap('n', '<leader>at', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
- vim.api.nvim_set_keymap('v', '<leader>at', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
+ vim.api.nvim_set_keymap('n', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
+ vim.api.nvim_set_keymap('v', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
 
- vim.api.nvim_set_keymap('n', '<leader>a<CR>', ':CodyAsk ', { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
- vim.api.nvim_set_keymap('v', '<leader>a<CR>', ":CodyAsk ", { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
+ vim.api.nvim_set_keymap('n', '<leader>C<CR>', ':CodyAsk ', { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
+ vim.api.nvim_set_keymap('v', '<leader>C<CR>', ":CodyAsk ", { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
 
 -- Keybindings for multicursor
 vim.api.nvim_set_keymap("n", "<C-.n>", "<Plug>(multicursor-next)", {})
