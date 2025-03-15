@@ -30,6 +30,11 @@ vim.api.nvim_set_keymap("n", "<S-c>", '"_c', { noremap = true })
 -- -- Some ThePrimeagen binds
 vim.api.nvim_set_keymap('n', 'Q', '<nop>', opts)
 
+-- Map jj and jk to escape from insert mode
+vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
+
+
 -- vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>a', opts)
 
 -- -- Switch from terminal mode to normal mode
