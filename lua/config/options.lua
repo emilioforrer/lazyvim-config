@@ -104,20 +104,5 @@ else
   -- Initially enable list mode when starting in normal mode
   enable_list_mode()
 
-
---  vim.api.nvim_set_keymap('n', '<leader>at', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
---  vim.api.nvim_set_keymap('v', '<leader>at', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
-
---  vim.api.nvim_set_keymap('n', '<leader>a<CR>', ':CodyAsk ', { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
---  vim.api.nvim_set_keymap('v', '<leader>a<CR>', ":CodyAsk ", { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
-
---   -- Keybindings for multicursor
---   vim.api.nvim_set_keymap("n", "<C-n>", "<Plug>(multicursor-next)", {})
---   vim.api.nvim_set_keymap("n", "<C-p>", "<Plug>(multicursor-prev)", {})
---   vim.api.nvim_set_keymap("n", "<C-b>", "<C-V>", { noremap = true })
-
---   -- Icon picker
---   -- vim.api.nvim_set_keymap("n", "<C-i>", "<cmd>IconPickerNormal<cr>", opts)
---   vim.api.nvim_set_keymap("n", "<C-\\><C-i>", "<cmd>IconPickerYank<cr>", opts)
---   vim.api.nvim_set_keymap("i", "<C-\\><C-i>", "<cmd>IconPickerInsert<cr>", opts)
+  
 end
