@@ -6,8 +6,22 @@
 -- -- ---------------------- Keybindings ------------------------------
 local opts = { noremap = true, silent = true }
 
--- Unindent code with Shift + Tab in insert mode
-vim.api.nvim_set_keymap('i', '<S-Tab>', '<C-d>', { noremap = true, silent = true })
+-- Indent and Unindent in Normal Mode
+vim.keymap.set("n", "<Tab>", ">>", { noremap = true, silent = true }) -- Indent
+vim.keymap.set("n", "<S-Tab>", "<<", { noremap = true, silent = true }) -- Unindent
+
+-- Indent and Unindent in Visual Mode
+vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true }) -- Indent and reselect
+vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true, silent = true }) -- Unindent and reselect
+
+
+vim.keymap.set("i", "<Tab>", function()
+  require("blink.cmp").select_next()
+end, { silent = true })
+
+vim.keymap.set("i", "<S-Tab>", function()
+  require("blink.cmp").select_prev()
+end, { silent = true })
 
 -- Mapping for CTRL+a to select all text in normal, insert, and visual mode
 vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true })
