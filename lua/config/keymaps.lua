@@ -15,13 +15,32 @@ vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true }) -- Indent
 vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true, silent = true }) -- Unindent and reselect
 
 
+local cmp = require("cmp")
+
 vim.keymap.set("i", "<Tab>", function()
-  require("blink.cmp").select_next()
+  if cmp.visible() then
+    cmp.select_next_item()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", false)
+  end
 end, { silent = true })
 
 vim.keymap.set("i", "<S-Tab>", function()
-  require("blink.cmp").select_prev()
+  if cmp.visible() then
+    cmp.select_prev_item()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n", false)
+  end
 end, { silent = true })
+
+
+-- vim.keymap.set("i", "<Tab>", function()
+--   require("blink.cmp").select_next()
+-- end, { silent = true })
+
+-- vim.keymap.set("i", "<S-Tab>", function()
+--   require("blink.cmp").select_prev()
+-- end, { silent = true })
 
 -- Mapping for CTRL+a to select all text in normal, insert, and visual mode
 vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true })
