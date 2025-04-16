@@ -99,3 +99,10 @@ else
   enable_list_mode()
 end
 
+-- Start Neovim in insert mode
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.cmd("startinsert")
+    end
+})
+
