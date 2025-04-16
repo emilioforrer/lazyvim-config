@@ -115,4 +115,26 @@ else
     vim.keymap.set("n", "<leader>uz", function()
       require("vscode").action("workbench.action.toggleZenMode")
     end, { desc = "Toggle Zen Mode" })
+
+    -- Source Control (Git) toggle
+    vim.keymap.set("n", "<leader>gg", function()
+      require("vscode").action("workbench.view.scm")
+    end, { desc = "Source Control" })
+
+    -- Window Navigation
+    vim.keymap.set("n", "<C-h>", function()
+      require("vscode").action("workbench.action.navigateLeft")
+    end, { desc = "Go to Left Window" })
+    
+    vim.keymap.set("n", "<C-j>", function()
+      require("vscode").action("workbench.action.navigateDown")
+    end, { desc = "Go to Lower Window" })
+    
+    vim.keymap.set("n", "<C-k>", function()
+      require("vscode").action("workbench.action.navigateUp")
+    end, { desc = "Go to Upper Window" })
+    
+    vim.keymap.set("n", "<C-l>", function()
+      require("vscode").action("workbench.action.navigateRight")
+    end, { desc = "Go to Right Window" })
 end
