@@ -43,47 +43,47 @@ vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 -- -- Switch from terminal mode to normal mode
 -- vim.api.nvim_set_keymap('t', '<C-w>', '<C-\\><C-n>', { noremap = true, silent = true })
 
- vim.api.nvim_set_keymap('n', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
- vim.api.nvim_set_keymap('v', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
+-- LazyVim/Nvim/Plugins especific settings to exclude from VSCode Neovim Extension
+if not vim.g.vscode then
 
- vim.api.nvim_set_keymap('n', '<leader>C<CR>', ':CodyAsk ', { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
- vim.api.nvim_set_keymap('v', '<leader>C<CR>', ":CodyAsk ", { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
+  vim.api.nvim_set_keymap('n', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
+  vim.api.nvim_set_keymap('v', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
+ 
+  vim.api.nvim_set_keymap('n', '<leader>C<CR>', ':CodyAsk ', { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
+  vim.api.nvim_set_keymap('v', '<leader>C<CR>', ":CodyAsk ", { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
 
--- Keybindings for multicursor
-vim.api.nvim_set_keymap("n", "<C-.n>", "<Plug>(multicursor-next)", {})
-vim.api.nvim_set_keymap("n", "<C-.p>", "<Plug>(multicursor-prev)", {})
+  -- Keybindings for multicursor
+  vim.api.nvim_set_keymap("n", "<C-.n>", "<Plug>(multicursor-next)", {})
+  vim.api.nvim_set_keymap("n", "<C-.p>", "<Plug>(multicursor-prev)", {})
 
--- Icon picker
-vim.api.nvim_set_keymap("n", "<leader>pi", "<cmd>IconPickerYank<cr>", { noremap = true, silent = true, desc = "Pick icon and yank" })
+  -- Icon picker
+  vim.api.nvim_set_keymap("n", "<leader>pi", "<cmd>IconPickerYank<cr>", { noremap = true, silent = true, desc = "Pick icon and yank" })
 
--- vim.keymap.set("i", "<Tab>", function()
---   local cmp = require("cmp")
---   if cmp.visible() then
---     cmp.select_next_item()
---   else
---     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", false)
---   end
--- end, { silent = true })
+  -- vim.keymap.set("i", "<Tab>", function()
+  --   local cmp = require("cmp")
+  --   if cmp.visible() then
+  --     cmp.select_next_item()
+  --   else
+  --     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", false)
+  --   end
+  -- end, { silent = true })
 
--- vim.keymap.set("i", "<S-Tab>", function()
---   local cmp = require("cmp")
---   if cmp.visible() then
---     cmp.select_prev_item()
---   else
---     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n", false)
---   end
--- end, { silent = true })
+  -- vim.keymap.set("i", "<S-Tab>", function()
+  --   local cmp = require("cmp")
+  --   if cmp.visible() then
+  --     cmp.select_prev_item()
+  --   else
+  --     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n", false)
+  --   end
+  -- end, { silent = true })
 
-vim.keymap.set("i", "<Tab>", function()
-  require("blink.cmp").select_next()
-end, { silent = true })
+  vim.keymap.set("i", "<Tab>", function()
+    require("blink.cmp").select_next()
+  end, { silent = true })
 
-vim.keymap.set("i", "<S-Tab>", function() 
-  require("blink.cmp").select_prev()
-end, { silent = true })
-
-
-if not vim.g.vscode then  -- Only run outside VSCode
+  vim.keymap.set("i", "<S-Tab>", function() 
+    require("blink.cmp").select_prev()
+  end, { silent = true })
 
   -- Register the description for the <leader>p group
   local which_key = require("which-key")
