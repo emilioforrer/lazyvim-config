@@ -2,7 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-
 -- -- ---------------------- Keybindings ------------------------------
 local opts = { noremap = true, silent = true }
 
@@ -13,34 +12,6 @@ vim.keymap.set("n", "<S-Tab>", "<<", { noremap = true, silent = true }) -- Unind
 -- Indent and Unindent in Visual Mode
 vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true }) -- Indent and reselect
 vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true, silent = true }) -- Unindent and reselect
-
-
--- local cmp = require("cmp")
-
--- vim.keymap.set("i", "<Tab>", function()
---   if cmp.visible() then
---     cmp.select_next_item()
---   else
---     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", false)
---   end
--- end, { silent = true })
-
--- vim.keymap.set("i", "<S-Tab>", function()
---   if cmp.visible() then
---     cmp.select_prev_item()
---   else
---     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n", false)
---   end
--- end, { silent = true })
-
-local cmp = require("blink.cmp")
-vim.keymap.set("i", "<Tab>", function()
-  cmp.select_next()
-end, { silent = true })
-
-vim.keymap.set("i", "<S-Tab>", function()
-  cmp.select_prev()
-end, { silent = true })
 
 -- Mapping for CTRL+a to select all text in normal, insert, and visual mode
 vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true })
@@ -67,20 +38,10 @@ vim.api.nvim_set_keymap('n', 'Q', '<nop>', opts)
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 
-
 -- vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>a', opts)
 
 -- -- Switch from terminal mode to normal mode
 -- vim.api.nvim_set_keymap('t', '<C-w>', '<C-\\><C-n>', { noremap = true, silent = true })
-
--- Register the description for the <leader>p group
-local which_key = require("which-key")
-
--- Register the group using the new format
-which_key.add({
-  { "<leader>p", group = "Plugins" },
-  { "<leader>C", group = "Cody" },
-})
 
  vim.api.nvim_set_keymap('n', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
  vim.api.nvim_set_keymap('v', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
@@ -94,3 +55,43 @@ vim.api.nvim_set_keymap("n", "<C-.p>", "<Plug>(multicursor-prev)", {})
 
 -- Icon picker
 vim.api.nvim_set_keymap("n", "<leader>pi", "<cmd>IconPickerYank<cr>", { noremap = true, silent = true, desc = "Pick icon and yank" })
+
+-- vim.keymap.set("i", "<Tab>", function()
+--   local cmp = require("cmp")
+--   if cmp.visible() then
+--     cmp.select_next_item()
+--   else
+--     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", false)
+--   end
+-- end, { silent = true })
+
+-- vim.keymap.set("i", "<S-Tab>", function()
+--   local cmp = require("cmp")
+--   if cmp.visible() then
+--     cmp.select_prev_item()
+--   else
+--     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n", false)
+--   end
+-- end, { silent = true })
+
+vim.keymap.set("i", "<Tab>", function()
+  require("blink.cmp").select_next()
+end, { silent = true })
+
+vim.keymap.set("i", "<S-Tab>", function() 
+  require("blink.cmp").select_prev()
+end, { silent = true })
+
+
+if not vim.g.vscode then  -- Only run outside VSCode
+
+  -- Register the description for the <leader>p group
+  local which_key = require("which-key")
+
+  -- Register the group using the new format
+  which_key.add({
+    { "<leader>p", group = "Plugins" },
+    { "<leader>C", group = "Cody" },
+  })
+
+end
