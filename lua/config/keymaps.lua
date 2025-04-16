@@ -3,6 +3,8 @@
 -- Add any additional keymaps here
 
 -- -- ---------------------- Keybindings ------------------------------
+-- Default keymaps https://www.lazyvim.org/configuration/general#keymaps
+
 local opts = { noremap = true, silent = true }
 
 -- Indent and Unindent in Normal Mode
@@ -94,4 +96,23 @@ if not vim.g.vscode then
     { "<leader>C", group = "Cody" },
   })
 
+else
+  -- ===========================VSCode specific keymaps===========================
+    -- VSCode terminal mappings
+    vim.keymap.set("n", "<leader>fT", function()
+      require("vscode").action("workbench.action.terminal.toggleTerminal")
+    end, { desc = "Terminal (cwd)" })
+    
+    vim.keymap.set("n", "<leader>ft", function()
+      require("vscode").action("workbench.action.terminal.toggleTerminal")
+    end, { desc = "Terminal (Root Dir)" })
+    
+    vim.keymap.set("n", "<c-/>", function()
+      require("vscode").action("workbench.action.terminal.toggleTerminal")
+    end, { desc = "Terminal (Root Dir)" })
+
+    -- VSCode Zen mode toggle
+    vim.keymap.set("n", "<leader>uz", function()
+      require("vscode").action("workbench.action.toggleZenMode")
+    end, { desc = "Toggle Zen Mode" })
 end
