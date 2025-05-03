@@ -4,6 +4,13 @@
 
 -- ---------------------- SHARED NEOVIM SETTINGS ------------------------------
 
+-- Start Neovim in insert mode
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+      vim.cmd("startinsert")
+  end
+})
+
 -- Create a user command (:Z) to execute zoxide query
 vim.api.nvim_create_user_command("Z", function(opts)
   local query = opts.args or ""
@@ -97,12 +104,34 @@ else
 
   -- Initially enable list mode when starting in normal mode
   enable_list_mode()
+
+  -- Add keymap to accept  suggestions
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+      vim.defer_fn(function()
+        vim.keymap.set("i", "<Tab>", function()
+          -- Safely check if Augment has a suggestion
+          local has_suggestion = false
+          local status, result = pcall(function()
+            return vim.fn.exists("*augment#has_suggestion") == 1 and 
+                   vim.fn.call("augment#has_suggestion", {}) == 1
+          end)
+          
+          if status and result then
+            -- Safely accept the suggestion
+            pcall(function() vim.fn.call("augment#accept", {}) end)
+            return ""
+          else
+            -- Fall back to blink.cmp
+            require("blink.cmp").select_next()
+            return ""
+          end
+        end, { expr = true, silent = true })
+      end, 100) -- Increased delay to ensure plugin is fully loaded
+    end
+  })
+
 end
 
--- Start Neovim in insert mode
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        vim.cmd("startinsert")
-    end
-})
+
 
