@@ -7,21 +7,6 @@ return {
     opts = {
         -- Main AI provider to use
         provider = "copilot",  -- Options include: "copilot", "ollama", etc.
-        auto_suggestions_provider = "copilot",
-        
-        -- Whether to use XML format for responses
-        use_xml_format = false,
-        
-        -- Copilot-specific settings
-        copilot = {},
-        
-        -- file_selector = "telescope",  -- Options: "telescope", "mini.pick", "fzf"
-        -- window = {
-        --   position = "right",  -- Options: "left", "right", "top", "bottom"
-        --   width = 50,          -- Width in columns when position is left/right
-        --   height = 15,         -- Height in rows when position is top/bottom
-        -- },
-        -- model = "gpt-4",      -- Default model to use
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
