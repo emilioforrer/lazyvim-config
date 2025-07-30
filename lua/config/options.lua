@@ -7,8 +7,14 @@
 -- Start Neovim in insert mode
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-      vim.cmd("startinsert")
-  end
+    vim.schedule(function()
+      local bufname = vim.api.nvim_buf_get_name(0)
+      local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
+      if bufname ~= "" and buftype == "" then
+        vim.cmd("startinsert")
+      end
+    end)
+  end,
 })
 
 -- Create a user command (:Z) to execute zoxide query
