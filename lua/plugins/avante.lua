@@ -5,8 +5,17 @@ return {
     enable = true,
     version = false,
     opts = {
-        -- Main AI provider to use
-        provider = "copilot",  -- Options include: "copilot", "ollama", etc.
+      -- Main AI provider to use
+      provider = "copilot",  -- Options include: "copilot", "ollama", "auggie-cli", etc.
+      acp_providers = {
+        ["auggie-cli"] = {
+          command = "auggie",
+          args = { "--acp" },
+          env = {
+            
+          },
+        },
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
