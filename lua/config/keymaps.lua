@@ -48,12 +48,6 @@ vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 -- LazyVim/Nvim/Plugins especific settings to exclude from VSCode Neovim Extension
 if not vim.g.vscode then
 
-  vim.api.nvim_set_keymap('n', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
-  vim.api.nvim_set_keymap('v', '<leader>Ct', ':CodyToggle<CR>', { noremap = true, silent = true, desc = "Toggle Cody AI Assistant" })
- 
-  vim.api.nvim_set_keymap('n', '<leader>C<CR>', ':CodyAsk ', { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
-  vim.api.nvim_set_keymap('v', '<leader>C<CR>', ":CodyAsk ", { noremap = true, silent = false, desc = "Ask Cody AI Assistant" })
-
   -- Keybindings for multicursor
   vim.api.nvim_set_keymap("n", "<C-.n>", "<Plug>(multicursor-next)", {})
   vim.api.nvim_set_keymap("n", "<C-.p>", "<Plug>(multicursor-prev)", {})
