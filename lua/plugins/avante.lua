@@ -1,4 +1,5 @@
 -- https://github.com/yetone/avante.nvim/blob/main/lua/avante/config.lua
+if true then return {} end
 return {
     "yetone/avante.nvim",
     event = "VeryLazy",
